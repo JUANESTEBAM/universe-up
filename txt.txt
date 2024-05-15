@@ -1,0 +1,181 @@
+Metodo pdogt
+
+1 Plasticidad
+
+¿EL CABELLO TIENE CAPACIDAD DE
+FORMAR FACILMENTE EL RIZO ?
+
+opcion de elegir Claro y Muy dificil 
+
+almacenar su respuesta 
+
+/*--------------------------------*/
+
+
+2 PERMEABILIDAD
+EL CABELLO MOJA FÁCILMENTE?
+opcion de elegir "Por supuesto" y "No, nunca"
+
+almacenar su respuesta
+
+/*--------------------------------*/
+
+3 Densidad
+¿CUAL ES LA CANTIDAD DE CABELLO? 
+opciones para elegir 
+
+"Poco"
+
+"Mucho"
+
+Almacenar rerspuesta
+
+/*--------------------------------*/
+
+4 POROSIDAD 
+	
+EL CABELLO SE SATURA FÁCILMENTE?
+SENSACIÓN DE PESADES AL
+APLICAR PRODUCTO
+
+opcion elegir "Si" o "De ningún modo"
+
+almacenar respuesta
+
+/*--------------------------------*/
+
+5 Oleosidad
+
+ ¿CUANTO SE ENGRASA LA PIEL
+  CABELLUADA?
+
+Opcion elegir "Poca" o "Mucha"
+
+/*--------------------------------*/
+
+6 GROSOR DE LA HEBRA
+¿QUE TAN GRUESA ES LA HEBRA CAPILAR ?
+
+Opcion de elegir Delgado, Medio o grueso.
+
+/*--------------------------------*/
+
+7 Textura
+
+¿QUE PATRON DE RIZO TIENE TU CABELLO?
+
+Opcion elegir "Ondulado", "Rizado", "Afro"
+
+almacenar respuesta 
+
+/*--------------------------------*/
+
+Al final deacuerdo a sus respuestas dar la sugerencia de productos y como usarlos 
+
+
+Respuesta "Claro" en la pregunta 1 la sugerencia es:
+
+Sugerencia = Usar técnica de definición
+cepillo, con pocas pasadas.
+
+
+responde "Muy dificil" en la pregunta 1 la sugerencia es
+
+Sugerencia = Siempre antes de lavar
+aplicar mascarilla (Crema 3 en 1 + Aceite +
+Leave In ) por al menos 15 Min. al definir aplicar Crema 3 en 1 y
+peinar de 15 a 20 veces cada sección.
+
+/*--------------------------------*/
+
+ responde "Por supuesto" en la pregunta 2 la sugerencia es
+
+Sugerencia = Lavar el cabello con
+Shampoo | Acondicionador Leave In ( no
+dejar aplicado )
+
+responde "No, nunca" en la pregunta 2 la sugerencia es
+
+Sugerencia = Antes del lavado poner
+Aceite Humectante o Crema 3 en 1 | Lavar
+con Shampoo y acondicionador. Peinar
+durante el lavado para ablandar la hebra
+capilar.
+
+/*--------------------------------*/
+
+responde "Poco" en la pregunta 3 la sugerencia es
+Sugerencia= Shampoo | Leave in acondicioador | Gel fluido
+
+responde "Mucho" en la pregunta 3 la sugerencia es
+
+Sugerencia= Aceite humectante | Shampoo Leave in
+Acondicionador | Aceite | Crema Gel
+
+/*--------------------------------*/
+
+responde "si" en la pregunta 4 la sugerencia es
+
+Sugerencia = Shampoo | Leave In
+acondicioador | Gel fluido
+
+
+responde "De ningun modo" en la pregunta 4 la sugerencia es
+
+Sugerencia: Aceite humectante | Shampoo
+Leave in
+Acondicionador | Aceite | Crema Gel
+
+/*--------------------------------*/
+
+responde "Poca" en la pregunta 5 la sugerencia es
+
+sugerencia: Leave In
+acondicionador | Shampoo
+
+responde "Mucha" en la pregunta 5 la sugerencia es
+
+sugerencia: Leave In
+acondicionador | Shampoo
+Para mantener la piel cabelluda
+sin grasa, aplica la técnica COPOO la cual
+consiste en aplicar primero poco
+acondicionador medios a puntas con el
+cabello, luego el Shampoo en el cuero
+cabelludo. Masajear suavemente.
+Enjuagar. (No repetir Acondicionador)
+Frecuencia de lavado: Diariamente, o
+máximo día de por medio.
+
+/*--------------------------------*/
+
+
+responde "Delgado" en la pregunta 6 la sugerencia es
+
+Producto sugerido: Crema | Gel Fluido
+
+
+
+responde "Medio/Grueso" en la pregunta 6 la sugerencia es
+
+Producto sugerido: Crema, Aceite , Gel fluido
+
+/*--------------------------------*/
+
+responde "ondulado" en la pregunta 7 la sugerencia es
+
+Producto sugerido: Crema | Leave in Acondicionador |Gel extra fuerte Aceite
+
+
+
+responde "Rizado" en la pregunta 7 la sugerencia es
+Producto sugerido: Crema | Aceite | Gel fluido 
+
+
+responde "Afro" en la pregunta 7 la sugerencia es
+
+Producto sugerido: Detangler | Leave in conditioner | Gel extra fuerte
+
+
+Al final enviar un mensaje al cliente informando que productos puede usar para el mejoramiento de su cabello 
+Si los productos a recomendar se repiten solo sugerir una vez.

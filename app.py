@@ -1,5 +1,6 @@
+from pymongo import MongoClient
 from flask import Flask, request
-import sett 
+import sett
 import services
 from pymongo import MongoClient
 
@@ -16,8 +17,9 @@ client = MongoClient(url)
 db = client['universe_python']
 collection = db['chats']
 
+app = Flask(__name__)
 
-
+# Almacena tus credenciales en variables
 
 @app.route('/bienvenido', methods=['GET'])
 def  bienvenido():
