@@ -2,31 +2,28 @@ from pymongo import MongoClient
 from flask import Flask, request
 import sett
 import services
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
 # Almacena tus credenciales en variables
-username = "1129804613"
-password = "1129804613"
+username = "luisafbs3"
+password = "Fionna5109"
 # Construye la URL de conexión utilizando las variables de credenciales
-url = f"mongodb+srv://{username}:{password}@cluster0.farnu1a.mongodb.net/mydatabase?retryWrites=true&w=majority"
+url = f"mongodb+srv://{username}:{password}@cluster0.skcoldx.mongodb.net/universe_python?retryWrites=true&w=majority&appName=Cluster0"
 # Crea el cliente de MongoDB
 client = MongoClient(url)
 # Selecciona la base de datos y la colección
-db = client['mydatabase']
-collection = db['mycollection']
-# Define el documento a insertar
-document = {"name": "sk", "city": "bengaluru"}
-# Inserta el documento en la colección
-inserted_document = collection.insert_one(document)
-# Imprime el ID del documento insertado
-print(f"Inserted Document ID: {inserted_document.inserted_id}")
-# Cierra la conexión con la base de datos
-client.close()
+db = client['universe_python']
+collection = db['chats']
+
+app = Flask(__name__)
+
+# Almacena tus credenciales en variables
 
 @app.route('/bienvenido', methods=['GET'])
 def  bienvenido():
-    return 'Hola mundo '
+    return 
 
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
@@ -54,12 +51,37 @@ def recibir_mensajes():
         contacts = value['contacts'][0]
         name = contacts['profile']['name']
         text = services.obtener_Mensaje_whatsapp(message)
+        
+        
 
+        chat_document = {
+            "number": number,
+            "name": name,
+            "messageId": messageId,
+            "text": text,
+            "response": None,
+             
+            
+            
+        }
+        
+        # Inserta el documento en la colección 'chats' de MongoDB
+        inserted_document = collection.insert_one(chat_document)
+        # Imprime el ID del documento insertado
+        print(f"Inserted Chat Document ID: {inserted_document.inserted_id}")
+        
         services.administrar_chatbot(text, number,messageId,name)
+        
+           
+             
+
         return 'enviado'
 
+      
+      
     except Exception as e:
         return 'no enviado ' + str(e)
 
 if __name__ == '__main__':
     app.run()
+

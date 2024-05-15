@@ -3,8 +3,28 @@ import sett
 import json
 import time
 import openai
+from pymongo import MongoClient
 
-openai.api_key = 'insertar'
+client=MongoClient('localhost',27017)
+
+try:
+    database=client['universe_python']
+
+    collection=database['datauser']
+
+    documents=collection.find()
+    
+    for document in documents:
+        print(document)
+
+    
+except Exception as ex:
+    print("error de conexión:{}".format(ex))
+
+    client.close()
+finally:
+    print("conexion Finalizada")
+
 
 def obtener_Mensaje_whatsapp(message):
     if 'type' not in message :
@@ -226,10 +246,20 @@ def administrar_chatbot(text, number, messageId, name):
     lista.append(markRead)
     time.sleep(2)
 
+    datos_a_guardar = {
+        "mensaje_usuario": text,
+        "numero_usuario": number,
+        "mensaje_id": messageId,
+        "nombre_usuario": name
+    }
+
+    collection.insert_one(datos_a_guardar)
+
     if "hola" in text:
         body = "¡Hola! 👋 Bienvenido a Rizos Felices."
         footer = "Rizos Felices"
-        options = ["✅ diagnostico", "📝informacion general", "✅ Sí, por supuesto"]
+        
+        options = ["✅ diagnostico", "📅 Catálogo Productos"]
 
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
@@ -389,12 +419,6 @@ def administrar_chatbot(text, number, messageId, name):
     for item in lista:
         enviar_Mensaje_whatsapp(item)
 
-    datos_a_guardar = {
-        "mensaje_usuario": text,
-        "numero_usuario": number,
-        "mensaje_id": messageId,
-        "nombre_usuario": name
-    }
 #indicador añadido para envio mensajes
 def replace_start(s):
     number = s[3:]
