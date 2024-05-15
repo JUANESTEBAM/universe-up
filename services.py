@@ -4,9 +4,7 @@ import json
 import time
 import openai
 
-
 openai.api_key = 'insertar'
-
 
 def obtener_Mensaje_whatsapp(message):
     if 'type' not in message :
@@ -219,101 +217,184 @@ def markRead_Message(messageId):
 usuarios = {}
 respuesta_usuarios= {}
 
-
-  
-def administrar_chatbot(text,number, messageId, name):
-    text = text.lower() #mensaje que envio el usuario
-    list = []
-    print("mensaje del usuario: ",text)
+def administrar_chatbot(text, number, messageId, name):
+    text = text.lower()
+    lista = []
+    print("mensaje del usuario: ", text)
 
     markRead = markRead_Message(messageId)
-    list.append(markRead)
+    lista.append(markRead)
     time.sleep(2)
 
     if "hola" in text:
-        body = "¡Hola! 👋 Bienvenido a Rizos Felices. ¿Cómo podemos ayudarte hoy?"
+        body = "¡Hola! 👋 Bienvenido a Rizos Felices."
         footer = "Rizos Felices"
-        options = ["✅ diagnostico", "📅 agendar cita"]
+        options = ["✅ diagnostico", "📝informacion general", "✅ Sí, por supuesto"]
 
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
-        list.append(replyReaction)
-        list.append(replyButtonData)
+        lista.append(replyReaction)
+        lista.append(replyButtonData)
+
+    elif respuesta_usuario == "✅ Sí, por supuesto":
+            nombre, numero = obtener_nombre_y_numero()  # Función para obtener el nombre y el número del usuario
+            almacenar_usuario(nombre, numero)
         
-        
-        
-        
+    elif "informacion general" in text:
+        body = "¿Qué necesitas saber de nosotros?"
+        footer = "Rizos Felices"
+        options = ["Lugares", "Productos"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed2", messageId)
+        lista.append(replyButtonData)
+# 1 plasticidad
     elif "diagnostico" in text:
-        body = "Responde las siguientes preguntas para obtener tu diagnostico. ¿EL CABELLO TIENE CAPACIDAD DE FORMAR FACILMENTE EL RIZO ?"
+        body = "Responde las siguientes preguntas para obtener tu diagnóstico. ¿Su cabello tiene capacidad de formar fácilmente el rizo?"
         footer = "Plasticidad"
-        options = ["Si", "No"]
+        options = ["claro", "muy dificil"]
 
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed2",messageId)
-        sticker = sticker_Message(number, get_media_id("perro_traje", "sticker"))
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed3", messageId)
+        lista.append(replyButtonData)
 
-        list.append(replyButtonData)
-        
-      
-        
-    elif  "si" in text:  
-         body = "EL CABELLO MOJA FÁCILMENTE?"
-         footer = "Permeabilidad"
-         options = ["✅ Sí", "⛔ No"]
+# 2 Permeabilidad
+    elif "claro" in text:
+        body = "¿Su cabello moja fácilmente?"
+        footer = "Permeabilidad"
+        options = ["por supuesto", "no, nunca"]
 
-         replyButtonData = buttonReply_Message(number, options, body, footer, "sed3", messageId)
-         list.append(replyButtonData) 
-            
-    elif "no" in text: 
-            # Hacer la siguiente pregunta sobre densidad
-            body = "¿Cuál es la cantidad de cabello?"
-            footer = "Densidad"
-            options = ["poco", "Mucho"]
-            
-            replyButtonData = buttonReply_Message(number, options, body, footer, "sed4", messageId)
-            list.append(replyButtonData)  
-            
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed4", messageId)
+        lista.append(replyButtonData)
+
+    elif "muy dificil" in text:
+        body = "¿Su cabello moja fácilmente?"
+        footer = "Permeabilidad"
+        options = ["por supuesto", "no, nunca"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed5", messageId)
+        lista.append(replyButtonData)
+
+# 3 Densidad
+    elif "por supuesto" in text:
+        body = "¿Cuál es la cantidad de cabello?"
+        footer = "Densidad"
+        options = ["poco", "mucho"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed6", messageId)
+        lista.append(replyButtonData)
+    elif "no, nunca" in text:
+        body = "¿Cuál es la cantidad de cabello?"
+        footer = "Densidad"
+        options = ["poco", "mucho"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed7", messageId)
+        lista.append(replyButtonData)
         
+# 4 Porosidad
+    elif "poco" in text:
+        body = "¿Su cabello se satura fácilmente?, Sensación de pesades al aplicar producto."
+        footer = "Porosidad"
+        options = ["Si", "De ningún modo"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed8", messageId)
+        lista.append(replyButtonData)
+    elif "mucho" in text:
+        body = "¿Su cabello se satura fácilmente?, Sensación de pesades al aplicar producto."
+        footer = "Porosidad"
+        options = ["Si", "De ningún modo"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed9", messageId)
+        lista.append(replyButtonData)
         
+# 5 Oleosidad
+    elif "si" in text:
+        body = "¿Cuanto se engrasa la piel cabelluda?"
+        footer = "Oleosidad"
+        options = ["Poca", "Mucha"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed10", messageId)
+        lista.append(replyButtonData)
+    elif "de ningún modo" in text:
+        body = "¿Cuanto se engrasa la piel cabelluda?"
+        footer = "Oleosidad"
+        options = ["Poca", "Mucha"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed11", messageId)
+        lista.append(replyButtonData)
         
-    elif "poco" in text: 
-            # Hacer la siguiente pregunta sobre densidad
-            body = "¿Cuál es la cantidad de cabellos?"
-            footer = "Densidad"
-            options = ["poco", "Mucho"]
-            
-            replyButtonData = buttonReply_Message(number, options, body, footer, "sed4", messageId)
-            list.append(replyButtonData)  
-            
-    elif "mucho" in text: 
-            # Hacer la siguiente pregunta sobre densidad
-            body = "¿Cuál es la cantidad de cabello2?"
-            footer = "Densidad"
-            options = ["si", "no"]
-            
-            replyButtonData = buttonReply_Message(number, options, body, footer, "sed4", messageId)
-            list.append(replyButtonData)  
-            
-    elif "si" in text: 
-            # Hacer la siguiente pregunta sobre densidad
-            body = "¿Cuál es la cantidad de cabello5?"
-            footer = "Densidad"
-            options = ["poco", "Mucho"]
-            
-            replyButtonData = buttonReply_Message(number, options, body, footer, "sed4", messageId)
-            list.append(replyButtonData)         
+# 6 Grosor de la hebra
+    elif "poca" in text:
+        body = "¿Que tan Gruesa es su hebra capilar?"
+        footer = "Grosor de la hebra"
+        options = ["Delgado", "Medio o Grueso"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed12", messageId)
+        lista.append(replyButtonData)
+    elif "mucha" in text:
+        body = "¿Que tan Gruesa es su hebra capilar?"
+        footer = "Grosor de la hebra"
+        options = ["Delgado", "Medio o Grueso"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed13", messageId)
+        lista.append(replyButtonData)
         
-   
-    # También podrías enviar una lista de productos recomendados, etc.
+# 7 Textura
+    elif "delgado" in text:
+        body = "¿Que patron de rizo tiene tu cabello?"
+        footer = "Textura"
+        options = ["Ondulado", "Rizado", "Afro"]
+
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed14", messageId)
+        lista.append(replyButtonData)
+        
+    elif "medio o grueso" in text:
+        body = "¿Que patron de rizo tiene tu cabello?"
+        footer = "Textura"
+        options = ["Ondulado", "Rizado", "Afro"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed15", messageId)
+        lista.append(replyButtonData)
+        
+# Final del diagnostico
+    elif "ondulado" in text:
+        body = "¿Presione para terminar?"
+        footer = "Final"
+        options = ["Terminar"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed16", messageId)
+        lista.append(replyButtonData)
+        
+    elif "rizado" in text:
+        body = "¿Presione para terminar?"
+        footer = "Final"
+        options = ["Terminar"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed17", messageId)
+        lista.append(replyButtonData)
+        
+    elif "afro" in text:
+        body = "¿Presione para terminar?"
+        footer = "Final"
+        options = ["Terminar"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed18", messageId)
+        lista.append(replyButtonData)
+        
+    elif "terminar" in text:
+        body = "¿Presione para terminar?"
+        footer = "Final"
+        options = ["Terminar"]
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed19", messageId)
+        lista.append(replyButtonData)
+                     
+    # Manejo de otras posibles preguntas o respuestas
     else:
         data = text_Message(number, "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
-        list.append(data)
+        lista.append(data)
 
-    for item in list:
+    for item in lista:
         enviar_Mensaje_whatsapp(item)
 
-
-
-
+    datos_a_guardar = {
+        "mensaje_usuario": text,
+        "numero_usuario": number,
+        "mensaje_id": messageId,
+        "nombre_usuario": name
+    }
 #indicador añadido para envio mensajes
 def replace_start(s):
     number = s[3:]
@@ -323,5 +404,3 @@ def replace_start(s):
         return "54" + number
     else:
         return s
-        
-

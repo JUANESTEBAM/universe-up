@@ -1,10 +1,28 @@
+from pymongo import MongoClient
 from flask import Flask, request
-import sett 
+import sett
 import services
 
-
-
 app = Flask(__name__)
+
+# Almacena tus credenciales en variables
+username = "1129804613"
+password = "1129804613"
+# Construye la URL de conexión utilizando las variables de credenciales
+url = f"mongodb+srv://{username}:{password}@cluster0.farnu1a.mongodb.net/mydatabase?retryWrites=true&w=majority"
+# Crea el cliente de MongoDB
+client = MongoClient(url)
+# Selecciona la base de datos y la colección
+db = client['mydatabase']
+collection = db['mycollection']
+# Define el documento a insertar
+document = {"name": "sk", "city": "bengaluru"}
+# Inserta el documento en la colección
+inserted_document = collection.insert_one(document)
+# Imprime el ID del documento insertado
+print(f"Inserted Document ID: {inserted_document.inserted_id}")
+# Cierra la conexión con la base de datos
+client.close()
 
 @app.route('/bienvenido', methods=['GET'])
 def  bienvenido():
